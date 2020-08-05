@@ -73,89 +73,94 @@ void playgeme()
 {
 	char ch;
 	int i,j;
+	//找到人的坐标
 	for(i=0;i<13;i++)
 	{
 		for(j=0;j<14;j++)
 		{
-			if(map[i][j]==5||map[i][j]==8)
+			if(map[i][j]==5||map[i][j]==8)//人在空地和在终点两种情况
 				break;
 		}
 	 if(map[i][j]==5||map[i][j]==8)
 				break;
 	}
-	printf("%d  %d",i,j);
-	ch=getch();
+	printf("%d  %d",i,j);//打印坐标
+	ch=getch();//得到键盘值
 	switch(ch)
 	{
+	//向上
 	case 'W':
 	case 'w':
 		if(map[i-1][j]==0||map[i-1][j]==3)//下一个地方是空地或者目的地
 		{
-		
+		//将人和空地或目的地交换
 			map[i-1][j]+=5;
 			map[i][j]-=5;
 			
 		}
-		else if((map[i-1][j]==4||map[i-1][j]==7)&&(map[i-2][j]!=1)&&(map[i-2][j]!=4))
+		else if((map[i-1][j]==4||map[i-1][j]==7)&&(map[i-2][j]!=1)&&(map[i-2][j]!=4))//下一个地方是箱子并且箱子不靠近墙和箱子
 		{
-		
-			map[i-2][j]+=4;
-			map[i-1][j]+=1;
-			map[i][j]-=5;
+			map[i-2][j]+=4;//变箱子
+			map[i-1][j]+=1;//变人
+			map[i][j]-=5;//变空地
 		
 		}
 		break;
+	//向下
 	case 'S':
 	case 's':
 		if(map[i+1][j]==0||map[i+1][j]==3)//下一个地方是空地或者目的地
 		{
-		
+		//将人和空地或目的地交换
 			map[i+1][j]+=5;
 			map[i][j]-=5;
 			
 		}
-		else if((map[i+1][j]==4||map[i+1][j]==7)&&(map[i+2][j]!=1)&&(map[i+2][j]!=4))
+		else if((map[i+1][j]==4||map[i+1][j]==7)&&(map[i+2][j]!=1)&&(map[i+2][j]!=4))//下一个地方是箱子并且箱子不靠近墙和箱子
 		{	
 		     	map[i+2][j]+=4;
 		    	map[i+1][j]+=1;
 		    	map[i][j]-=5;
 		}
 		break;
+	//向左
 	case 'A':
 	case 'a':
 		if(map[i][j-1]==0||map[i][j-1]==3)//下一个地方是空地或者目的地
 		{
-			
+			//将人和空地或目的地交换
 			map[i][j-1]+=5;
 			map[i][j]-=5;
 			
 		}
-		else if((map[i][j-1]==4||map[i][j-1]==7)&&(map[i][j-2]!=1)&&(map[j-2][j]!=4))
+		else if((map[i][j-1]==4||map[i][j-1]==7)&&(map[i][j-2]!=1)&&(map[j-2][j]!=4))//下一个地方是箱子并且箱子不靠近墙和箱子
 		{
 		
-			map[i][j-2]+=4;
-			map[i][j-1]+=1;
-			map[i][j]-=5;
+			map[i][j-2]+=4;//空地变成箱子
+			map[i][j-1]+=1;//箱子变人
+			map[i][j]-=5;//人变空地
 			
 		
 		}
 		break;
+	//向右
 	case 'd':
 	case 'D':
 		if(map[i][j+1]==0||map[i][j+1]==3)//下一个地方是空地或者目的地
 		{
-			
+			//将人和空地或目的地交换
 			map[i][j+1]+=5;
 			map[i][j]-=5;
 		}
-		else if((map[i][j+1]==4||map[i][j+1]==7)&&(map[i][j+2]!=1)&&(map[i][j+2]!=4))
+		else if((map[i][j+1]==4||map[i][j+1]==7)&&(map[i][j+2]!=1)&&(map[i][j+2]!=4))//下一个地方是箱子并且箱子不靠近墙和箱子
 		{
 		
-			map[i][j+2]+=4;
-			map[i][j+1]+=1;
-			map[i][j]-=5;
+			map[i][j+2]+=4;//空地变箱子
+			map[i][j+1]+=1;//箱子变人
+			map[i][j]-=5;//人变空地
 		
 		}
 		break;
-}
+    }
+
 }
